@@ -1,7 +1,6 @@
 package com.shebogholo.starter.user;
 
 import lombok.Builder;
-
 import javax.persistence.*;
 
 @Entity
