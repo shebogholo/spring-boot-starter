@@ -38,9 +38,9 @@ public class UserController {
     }
 
     @PostMapping
-    public void registerUser(@RequestBody User user){
+    public void registerUser(@RequestBody UserRequest userRequest){
         try {
-            userService.registerUser(user);
+            userService.registerUser(userRequest);
         }catch (Exception e){
             throw new ApiRequestException(e.getMessage());
         }

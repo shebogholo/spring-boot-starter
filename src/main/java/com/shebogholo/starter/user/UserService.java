@@ -28,7 +28,15 @@ public class UserService {
         userRepository.deleteById(userId);
     }
 
-    public void registerUser(User user){
+    public void registerUser(UserRequest userRequest){
+        User user = User.builder()
+                .firstName(userRequest.firstName())
+                .lastName(userRequest.lastName())
+                .email(userRequest.email())
+                .build();
+        // todo: Check if email is valid
+        // todo: Check if email is not taken
+        // todo: Store user to DB
         userRepository.save(user);
     }
 

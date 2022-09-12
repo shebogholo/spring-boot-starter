@@ -5,16 +5,19 @@ Content-Type: application/json
 {
   "firstName": "ddd",
   "lastName": "ddd",
-  "email": "3@gmail.com"
+  "email": "5@gmail.com"
 }
+
 
 ### Get all users
 GET http://localhost/api/v1/users
 Accept: application/json
 
+
 ### Get user by Id
 GET http://localhost/api/v1/users/1
 Accept: application/json
+
 
 ### Delete user by Id
 DELETE http://localhost/api/v1/users/3
@@ -28,7 +31,7 @@ Content-Type: application/json
 {
   "firstName": "3",
   "lastName": "3",
-  "email": "3@gmail.com"
+  "email": "g@gmail.com"
 }
 
 

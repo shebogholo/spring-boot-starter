@@ -1,5 +1,7 @@
 package com.shebogholo.starter.user;
 
+import lombok.Builder;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,6 +10,7 @@ import javax.persistence.*;
                 "email"
         })
 })
+@Builder
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
