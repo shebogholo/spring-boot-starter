@@ -13,9 +13,12 @@
 11. Component
 12. Builder
 
-
 ### Dependencies
 1. Jpa
 2. Web
 3. MariaDB
 4. Lombok
+
+### Spring Boot Commands
+1. ``` ./mvnw clean install ```
+2. ``` ./mvnw spring-boot:run ```

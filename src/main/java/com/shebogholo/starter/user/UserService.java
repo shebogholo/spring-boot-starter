@@ -36,7 +36,7 @@ public class UserService {
                 .build();
         // todo: Check if email is valid
         // todo: Check if email is not taken
-        // todo: Store user to DB
+        // Store user to DB
         userRepository.save(user);
     }
 
