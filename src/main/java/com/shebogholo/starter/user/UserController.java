@@ -41,4 +41,9 @@ public class UserController {
     public void registerUser(@RequestBody User user){
         userService.registerUser(user);
     }
+
+    @PutMapping("{userId}")
+    public void updateUser(@PathVariable("userId") Long userId, @RequestBody User user){
+        userService.updateUser(userId, user);
+    }
 }
