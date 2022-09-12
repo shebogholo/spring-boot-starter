@@ -39,7 +39,11 @@ public class UserController {
 
     @PostMapping
     public void registerUser(@RequestBody User user){
-        userService.registerUser(user);
+        try {
+            userService.registerUser(user);
+        }catch (Exception e){
+            throw new ApiRequestException(e.getMessage());
+        }
     }
 
     @PutMapping("{userId}")

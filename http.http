@@ -5,7 +5,7 @@ Content-Type: application/json
 {
   "firstName": "ddd",
   "lastName": "ddd",
-  "email": "ddd@gmail.com"
+  "email": "3@gmail.com"
 }
 
 ### Get all users
