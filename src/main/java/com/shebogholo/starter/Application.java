@@ -1,16 +1,16 @@
 package com.shebogholo.starter;
 
-import com.shebogholo.starter.user.User;
-import com.shebogholo.starter.user.UserRepository;
 import com.shebogholo.starter.utils.Message;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
 @RestController
@@ -26,14 +26,24 @@ public class Application {
     }
 
     @Bean
-    ApplicationRunner init(UserRepository userRepository){
+    public PasswordEncoder encoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+//    @Bean
+//    public WebMvcConfigurer corsConfigurer() {
+//        return new WebMvcConfigurer() {
+//            @Override
+//            public void addCorsMappings(CorsRegistry registry) {
+//                registry.addMapping("/auth/*").allowedOrigins("http://localhost:4200");
+//            }
+//        };
+//    }
+
+    @Bean
+    ApplicationRunner init(){
         return args -> {
-            // create new instances of users
-            User user4 = new User("ddd", "ddd", "ddd@gmail.com");
-            User user5 = new User("eee", "eee", "eee@gmail.com");
-            User user6 = new User("fff", "fff", "fff@gmail.com");
-            // insert users to database
-            userRepository.saveAll(List.of(user4, user5, user6));
+            System.out.println("***********************************************************************");
         };
     }
 }

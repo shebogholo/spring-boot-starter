@@ -1,5 +1,6 @@
 package com.shebogholo.starter.user;
 
+import com.shebogholo.starter.auth.LoginRequest;
 import com.shebogholo.starter.exception.ApiRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -8,6 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin
 @RequestMapping("api/v1/users")
 public class UserController {
 
@@ -34,15 +36,6 @@ public class UserController {
             userService.deleteUserById(userId);
         }catch (Exception e){
             throw new ApiRequestException("User with id="+userId+" does not exist!");
-        }
-    }
-
-    @PostMapping
-    public void registerUser(@RequestBody UserRequest userRequest){
-        try {
-            userService.registerUser(userRequest);
-        }catch (Exception e){
-            throw new ApiRequestException(e.getMessage());
         }
     }
 

@@ -1,5 +1,6 @@
 package com.shebogholo.starter.user;
 
+import com.shebogholo.starter.auth.LoginRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,18 +27,6 @@ public class UserService {
 
     public void deleteUserById(Long userId){
         userRepository.deleteById(userId);
-    }
-
-    public void registerUser(UserRequest userRequest){
-        User user = User.builder()
-                .firstName(userRequest.firstName())
-                .lastName(userRequest.lastName())
-                .email(userRequest.email())
-                .build();
-        // todo: Check if email is valid
-        // todo: Check if email is not taken
-        // Store user to DB
-        userRepository.save(user);
     }
 
     @Transactional
