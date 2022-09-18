@@ -21,9 +21,9 @@ public class AuthController {
 
     @ResponseStatus(code = HttpStatus.CREATED)
     @PostMapping("/register")
-    public void registerUser(@RequestBody RegisterRequest registerRequest){
+    public String registerUser(@RequestBody RegisterRequest registerRequest){
         try {
-            authService.register(registerRequest);
+            return authService.register(registerRequest);
         }catch (Exception e){
             throw new ApiRequestException(e.getMessage());
         }

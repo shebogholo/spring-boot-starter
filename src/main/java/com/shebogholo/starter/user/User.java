@@ -1,9 +1,7 @@
 package com.shebogholo.starter.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
-import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
 
@@ -22,12 +20,16 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+
     @NonNull
     private String firstName;
+
     @NonNull
     private String lastName;
+
     @NonNull
     private String email;
+
     @JsonIgnore
     @NonNull
     private String password;

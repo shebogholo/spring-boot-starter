@@ -24,7 +24,7 @@ public class AuthService {
     }
 
     // register
-    public void register(RegisterRequest registerRequest) {
+    public String register(RegisterRequest registerRequest) {
         User user = User.builder()
                 .firstName(registerRequest.firstName())
                 .lastName(registerRequest.lastName())
@@ -32,24 +32,27 @@ public class AuthService {
                 .password(this.passwordService.passwordEncoder().encode(registerRequest.password()))
                 .build();
         // todo: Check if email is valid
-        // todo: Check if email is not taken
 
-        // Store user to DB
-        userRepository.save(user);
+        // Check if email is not taken
+        if (userRepository.existsByEmail(user.getEmail())){
+            return "This email already exist!";
+        }else {
+            // Store user to DB
+            userRepository.save(user);
+            return "User registered successfully!";
+        }
     }
 
     // login
     public Optional<User> login(LoginRequest loginRequest) {
-        String password = this.passwordService.passwordEncoder().encode(loginRequest.password());
-//        System.out.println("-----------------");
-//
-//        System.out.println(password);
-
         Optional<User> user =  userRepository.findByEmail(loginRequest.email());
-        user.ifPresent(
-                a -> {
-                    System.out.println(a.getPassword());
-                });
+        if (user.isPresent()){
+            if(this.passwordService.passwordEncoder().matches(loginRequest.password(), user.get().getPassword())){
+                return user;
+            }
+        }else{
+            return user;
+        }
         return user;
     }
 
