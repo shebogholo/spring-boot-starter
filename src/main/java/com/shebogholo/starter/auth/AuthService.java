@@ -45,6 +45,7 @@ public class AuthService {
 
     // login
     public Optional<User> login(LoginRequest loginRequest) {
+        // todo: checkout this login part
         Optional<User> user =  userRepository.findByEmail(loginRequest.email());
         if (user.isPresent()){
             if(this.passwordService.passwordEncoder().matches(loginRequest.password(), user.get().getPassword())){
